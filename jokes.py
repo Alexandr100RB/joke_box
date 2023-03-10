@@ -43,5 +43,5 @@ jokes = ['''
 — А дам.
 ''']
 
-def getRandomJoke(jokes):
-    return (random.choice(jokes))
+def getRandomJoke():
+    return random.choice(jokes)

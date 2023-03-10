@@ -1,18 +1,18 @@
 import random
 
-
 def guessInt():
-    NumberToGuess=random.randint(1,10)
+    numberToGuess=random.randint(1,10)
     userGuess=-1
 
-    while userGuess!=NumberToGuess:
-        userGuess=int(input("Угадай число от 1 до 10\n"))
-        if userGuess > NumberToGuess:
+    print("Угадай число от 1 до 10")
+    while userGuess!=numberToGuess:
+        userGuess=int(input(""))
+        if userGuess > numberToGuess:
             print("Число должно быть меньше!")
-        elif userGuess < NumberToGuess:
+        elif userGuess < numberToGuess:
             print("Число должно быть больше!")
         else:
-            print("Вы угадали, это число = " + str(NumberToGuess))
+            print("Вы угадали, это число " + str(numberToGuess))
             #Конец игры - выйти из цикла while
             break
 

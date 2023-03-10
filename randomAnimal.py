@@ -14,5 +14,5 @@ words = '''аист акула бабуин баран барсук бобр б�
 
 # получаем случайное слово из списка
 
-def getRandomAnimal(wordList):
-    return random.choice(wordList)
+def getRandomAnimal():
+    return random.choice(words)
