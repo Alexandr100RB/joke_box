@@ -1,6 +1,7 @@
 import requests
 from config import APIKEY_ADDRESS, APIKEY_WEATHER
 
+
 def get_address_and_weather_from_coords(coords, lon, lat):
     #заполняем параметры
     PARAMS_A = {
