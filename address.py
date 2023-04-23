@@ -2,7 +2,7 @@ import requests
 from config import APIKEY_ADDRESS, APIKEY_WEATHER
 
 
-def get_address_and_weather_from_coords(coords, lon, lat):
+def get_address_from_coords(coords, lon, lat):
     #заполняем параметры
     PARAMS_A = {
         "apikey": APIKEY_ADDRESS,
@@ -40,6 +40,6 @@ def get_address_and_weather_from_coords(coords, lon, lat):
 
         # возвращаем адрес и погоду
         return result
-    except Exception as e:
+    except Exception:
         #если не смогли, то возвращаем ошибку
         return "я не смог(("

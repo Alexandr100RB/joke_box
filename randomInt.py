@@ -1,5 +1,7 @@
 import random
 
+
+# пока это всё не работает
 def guessInt():
     numberToGuess=random.randint(1,10)
     userGuess=-1

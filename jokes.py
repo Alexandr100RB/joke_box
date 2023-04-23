@@ -43,5 +43,7 @@ jokes = ['''
 — А дам.
 ''']
 
+
+# получаем случайное слово из списка
 def getRandomJoke():
     return random.choice(jokes)

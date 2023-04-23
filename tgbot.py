@@ -4,12 +4,9 @@ from aiogram.utils import executor
 
 from randomAnimal import getRandomAnimal
 from jokes import getRandomJoke
-from randomInt import guessInt
-from address import get_address_and_weather_from_coords
+from address import get_address_from_coords
 from keyboards import KEYBOARD, INLINE_KB_AHAHA
 from config import TOKEN
-
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, update
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
@@ -22,6 +19,7 @@ async def process_start_command(message: types.Message):
     await bot.send_message(message.from_user.id, "Привет! Я бот, зацени, чё могу")
     await message.answer("Чё хочешь то от жизни??", reply_markup=KEYBOARD)
 
+# пока не работает
 # @dp.message_handler(text = 'загадай число')
 # async def process_guess_int_command(message: types.Message):
 #     await message.reply('Блин, этому пока что только учусь', reply_markup=inline_kb2)
@@ -41,15 +39,14 @@ def get_address_keyboard():
 
 @dp.message_handler(content_types=["location"])
 async def process_address_command(message: types.Location):
-    # вытаскиваем из него долготу и ширину
+    # вытаскиваем из геопозиции долготу и ширину
     current_position = (message.location.longitude, message.location.latitude)
     lon = message.location.longitude
     lat = message.location.latitude
     # создаем строку в виде ДОЛГОТА,ШИРИНА
     coords = f"{current_position[0]},{current_position[1]}"
 
-    #await bot.send_message(message.from_user.id, lon, reply_markup=keyboard)
-    await bot.send_message(message.from_user.id, get_address_and_weather_from_coords(coords, lon, lat), reply_markup=KEYBOARD)
+    await bot.send_message(message.from_user.id, get_address_from_coords(coords, lon, lat), reply_markup=KEYBOARD)
 
 @dp.message_handler(text = 'где я')
 async def process_locate_me_command(message: types.Message):
@@ -80,6 +77,6 @@ async def send_answer(message: types.Message):
 async def main():
     await dp.start_polling(bot)
 
-
+# Запуск бота
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True, on_startup=start_bot)
